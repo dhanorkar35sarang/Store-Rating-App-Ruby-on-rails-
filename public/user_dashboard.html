@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <h2>Admin Dashboard</h2>
+    <div class="summary">
+      <p>Total Users: <span id="totalUsers">0</span></p>
+      <p>Total Stores: <span id="totalStores">0</span></p>
+      <p>Total Ratings Submitted: <span id="totalRatings">0</span></p>
+    </div>
+
+    <h3>Add New User</h3>
+    <form id="addUserForm">
+      <input type="text" id="newUserName" placeholder="Name" required>
+      <input type="email" id="newUserEmail" placeholder="Email" required>
+      <input type="text" id="newUserAddress" placeholder="Address" required>
+      <input type="password" id="newUserPassword" placeholder="Password" required>
+      <select id="newUserRole">
+        <option value="normal_user">Normal User</option>
+        <option value="store_owner">Store Owner</option>
+        <option value="admin">Admin</option>
+      </select>
+      <button type="submit">Add User</button>
+    </form>
+
+    <!-- Role Switching Dropdown -->
+<h3>Switch Role</h3>
+<select id="roleSwitcher">
+  <option value="admin">Admin</option>
+  <option value="store_owner">Store Owner</option>
+  <option value="normal_user">Normal User</option>
+</select>
+<button onclick="switchRole()">Switch Role</button>
+
+
+    <h3>Users List</h3>
+    <table id="usersTable">
+      <thead>
+        <tr>
+          <th>Name <button onclick="sortUsers('name')">Sort</button></th>
+          <th>Email <button onclick="sortUsers('email')">Sort</button></th>
+          <th>Role <button onclick="sortUsers('role')">Sort</button></th>
+        </tr>
+      </thead>
+      <tbody id="usersList"></tbody>
+    </table>
+
+    <h3>Stores List</h3>
+    <table id="storesTable">
+      <thead>
+        <tr>
+          <th>Name <button onclick="sortStores('name')">Sort</button></th>
+          <th>Address <button onclick="sortStores('address')">Sort</button></th>
+          <th>Rating <button onclick="sortStores('average_rating')">Sort</button></th>
+        </tr>
+      </thead>
+      <tbody id="storesList"></tbody>
+    </table>
+  </div>
+
+  <!-- user_dashboard.html or store_details.html -->
+<form id="ratingForm">
+  <label for="storeId">Store ID:</label>
+  <input type="number" id="storeId" placeholder="Enter Store ID" required>
+  
+  <label for="rating">Rating (1-5):</label>
+  <input type="number" id="rating" min="1" max="5" placeholder="Enter Rating" required>
+
+  <button type="submit">Submit Rating</button>
+</form>
+
+<div id="ratingMessage"></div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
